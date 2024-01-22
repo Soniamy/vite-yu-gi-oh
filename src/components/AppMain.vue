@@ -1,8 +1,12 @@
 <script>
 import AppSearchType from './AppSearchType.vue';
-import { store } from './store';
+import AppCard from './AppCard.vue';
+import { store } from '../store';
 export default {
-  components: { AppSearchType },
+  components: {
+    AppSearchType,
+    AppCard,
+  },
   data() {
     return {
       store,
@@ -15,8 +19,21 @@ export default {
 <template>
   <main>
     <AppSearchType />
-    <div class="container p-4">
-      <div class="top-bar d-flex align-items-center"></div>
+    <div class="container p-5">
+      <div class="top-bar d-flex align-items-center">
+        <h5 class="text-light p-2">
+          Found {{ store.cardsArray.length }} cards
+        </h5>
+      </div>
+      <div class="cards-container d-flex flex-wrap">
+        <AppCard
+          v-for="card in store.cardsArray"
+          :key="card.id"
+          :imgURL="card.card_images[0].image_url"
+          :cardName="card.name"
+          :cardType="card.archetype"
+        />
+      </div>
     </div>
   </main>
 </template>
@@ -30,6 +47,12 @@ main {
     background-color: white;
     box-shadow: 0 0 15px rgba($color: #000000, $alpha: 0.5);
     border-radius: 5px;
+    .top-bar {
+      height: 70px;
+      background-color: black;
+      border-radius: 5px 5px 0 0;
+      margin: 0 5px;
+    }
   }
 }
 </style>

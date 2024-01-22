@@ -3,6 +3,10 @@
 
 // Import all of Bootstrap's CSS
 @import 'bootstrap/scss/bootstrap';
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth !important;
+}
 
 h1 {
   color: black;
