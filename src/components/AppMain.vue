@@ -1,7 +1,12 @@
 <script>
+import AppSearchType from './AppSearchType.vue';
+import { store } from './store';
 export default {
+  components: { AppSearchType },
   data() {
-    return {};
+    return {
+      store,
+    };
   },
   methods: {},
 };
@@ -9,6 +14,7 @@ export default {
 
 <template>
   <main>
+    <AppSearchType />
     <div class="container p-4">
       <div class="top-bar d-flex align-items-center"></div>
     </div>
