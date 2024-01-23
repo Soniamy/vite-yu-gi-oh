@@ -8,4 +8,8 @@ export const store = reactive({
   cardOffset: 0,
   isLoading: true,
   optionType: null,
+  //AGGIUNTA AXIOS PER FILTRAGGIO DI ARCHETIPO//
+  yuArchetype: [],
+  apiArchetypeUrl: 'https://db.ygoprodeck.com/api/v7/archetypes.php',
+  keyArchetype: '',
 });

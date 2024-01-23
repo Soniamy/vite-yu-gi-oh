@@ -42,21 +42,9 @@ export default {
           }, 2000);
         });
     },
-    getAllCardsTypes() {
-      axios.get(store.apiURL).then((result) => {
-        const cards = result.data.data;
-        cards.forEach((card) => {
-          if (!store.cardsType.includes(card.type)) {
-            store.cardsType.push(card.type);
-          }
-        });
-        console.log(store.cardsType);
-      });
-    },
   },
   mounted() {
     this.getApi();
-    this.getAllCardsTypes();
   },
 };
 </script>
