@@ -1,6 +1,7 @@
 <script>
 import AppSearchType from './AppSearchType.vue';
 import AppCard from './AppCard.vue';
+import numberTotalCards from './numberTotalCards.vue';
 //importazione di axios
 import axios from 'axios';
 import { store } from '../store';
@@ -8,6 +9,7 @@ export default {
   components: {
     AppSearchType,
     AppCard,
+    numberTotalCards,
   },
   data() {
     return {
@@ -38,9 +40,7 @@ export default {
     <AppSearchType @ricerca="ricerca" />
     <div class="container p-5">
       <div class="top-bar d-flex align-items-center">
-        <h5 class="text-light p-2">
-          Found {{ store.cardsArray.length }} cards
-        </h5>
+        <numberTotalCards />
       </div>
       <div class="cards-container d-flex flex-wrap">
         <AppCard
