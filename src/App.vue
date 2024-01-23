@@ -26,21 +26,13 @@ export default {
   methods: {
     getApi() {
       store.isLoading = true;
-      axios
-        .get(store.apiURL, {
-          params: {
-            num: store.cardNum,
-            offset: store.cardOffset,
-            type: store.optionType,
-          },
-        })
-        .then((result) => {
-          store.cardsArray = result.data.data;
-          //BONUS//
-          setTimeout(() => {
-            store.isLoading = false;
-          }, 2000);
-        });
+      axios.get(store.apiURL).then((result) => {
+        store.cardsArray = result.data.data;
+        //BONUS//
+        setTimeout(() => {
+          store.isLoading = false;
+        }, 2000);
+      });
     },
   },
   mounted() {
@@ -54,7 +46,7 @@ export default {
 
   <AppLoader v-if="store.isLoading" />
   <div class="container-after-loading" v-else>
-    <AppMain @startSearchType="getApi" @reset="getApi" />
+    <AppMain />
   </div>
 
   <AppFooter />

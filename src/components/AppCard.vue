@@ -4,7 +4,7 @@ export default {
   props: {
     imgURL: String,
     cardName: String,
-    cardType: {
+    archetype: {
       type: String,
       default: 'Not Found',
     },
@@ -20,8 +20,8 @@ export default {
     <div class="card-name mt-1 text-light">
       <p class="text-center fw-bold">{{ cardName }}</p>
     </div>
-    <div class="card-type">
-      <p class="text-center fst-italic">{{ cardType }}</p>
+    <div class="card-archetype">
+      <p class="text-center fst-italic">{{ archetype }}</p>
     </div>
   </div>
 </template>

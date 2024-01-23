@@ -1,6 +1,8 @@
 <script>
 import AppSearchType from './AppSearchType.vue';
 import AppCard from './AppCard.vue';
+//importazione di axios
+import axios from 'axios';
 import { store } from '../store';
 export default {
   components: {
@@ -12,13 +14,28 @@ export default {
       store,
     };
   },
-  methods: {},
+  methods: {
+    //filtro di ricerca per archetipo
+    ricerca() {
+      if (this.store.keyArchetype !== '') {
+        axios
+          .get(store.apiURL, { params: { archetype: this.store.keyArchetype } })
+          .then((response) => {
+            store.cardsArray = response.data.data;
+          });
+      }
+    },
+  },
+  created() {
+    this.ricerca();
+  },
 };
 </script>
 
 <template>
   <main>
-    <AppSearchType />
+    <!--assegnazione dell'evento ricerca-->
+    <AppSearchType @ricerca="ricerca" />
     <div class="container p-5">
       <div class="top-bar d-flex align-items-center">
         <h5 class="text-light p-2">
@@ -31,7 +48,7 @@ export default {
           :key="card.id"
           :imgURL="card.card_images[0].image_url"
           :cardName="card.name"
-          :cardType="card.archetype"
+          :archetype="card.archetype"
         />
       </div>
     </div>
